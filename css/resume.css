@@ -9,6 +9,7 @@ body {
     color: #fff;
     background: #0a0a0a;
     overflow-x: hidden;
+    line-height: 1.6;
 }
 
 /* Particle Background */
@@ -127,118 +128,97 @@ body {
     width: 100%;
 }
 
-/* Contact Intro Section */
-.contact-intro {
-    height: 60vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    position: relative;
-}
-
-.intro-content {
+/* Resume Container */
+.resume-container {
     max-width: 800px;
-    padding: 0 1rem;
+    margin: 80px auto 20px;
+    padding: 2rem;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 221, 235, 0.1);
 }
 
-.contact-intro h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-    opacity: 0;
-    animation: fadeIn 1s forwards;
-}
-
-.contact-intro p {
-    font-size: 1.3rem;
-    color: #ccc;
-    opacity: 0;
-    animation: fadeIn 1s forwards 0.5s;
-}
-
-/* General Section Styling */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 4rem 2rem;
-}
-
-.section-title {
-    font-size: 2.5rem;
+header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
     color: #00ddeb;
+    margin-bottom: 0.5rem;
+}
+
+header p {
+    font-size: 1rem;
+    color: #ccc;
+}
+
+header a {
+    color: #00ddeb;
+    text-decoration: none;
+}
+
+header a:hover {
+    color: #007bff;
+}
+
+section {
+    margin-bottom: 2rem;
+}
+
+section h2 {
+    font-size: 1.8rem;
+    color: #00ddeb;
+    margin-bottom: 1rem;
     position: relative;
 }
 
-.section-title::after {
+section h2::after {
     content: '';
     width: 50px;
     height: 3px;
     background: #00ddeb;
     position: absolute;
-    bottom: -10px;
-    left: 50%;
-    transform: translateX(-50%);
+    bottom: -5px;
+    left: 0;
 }
 
-/* Contact Section */
-.contact {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 4rem 0;
+ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #ccc;
 }
 
-.contact-grid {
-    display: flex;
-    justify-content: center;
-    max-width: 1000px;
-    margin: 0 auto;
+.job {
+    margin-bottom: 1.5rem;
 }
 
-/* Contact Details */
-.contact-details {
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 1s forwards 0.5s;
-    max-width: 500px;
-}
-
-.contact-details h3 {
+.job h3 {
     font-size: 1.5rem;
     color: #00ddeb;
-    margin-bottom: 1rem;
+    margin-bottom: 0.3rem;
 }
 
-.contact-details p {
+.job p {
     color: #ccc;
-    margin-bottom: 0.5rem;
 }
 
-.social-links {
-    margin-top: 1rem;
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-    justify-content: center;
+button {
+    display: block;
+    margin: 0 auto;
+    padding: 0.8rem 1.5rem;
+    background: linear-gradient(45deg, #00ddeb, #007bff);
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.social-link {
-    color: #00ddeb;
-    text-decoration: none;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-}
-
-.social-link i {
-    font-size: 1.2rem;
-}
-
-.social-link:hover {
-    color: #007bff;
-    transform: translateY(-3px);
+button:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(0, 221, 235, 0.5);
 }
 
 /* Animations */
@@ -246,6 +226,17 @@ body {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
+
+section {
+    opacity: 0;
+    animation: fadeIn 1s forwards;
+}
+
+section:nth-child(2) { animation-delay: 0.2s; }
+section:nth-child(3) { animation-delay: 0.4s; }
+section:nth-child(4) { animation-delay: 0.6s; }
+section:nth-child(5) { animation-delay: 0.8s; }
+section:nth-child(6) { animation-delay: 1.0s; }
 
 /* Responsive Design */
 @media (max-width: 768px) {
@@ -291,20 +282,25 @@ body {
         padding: 0.5rem 0;
     }
 
-    .contact-intro h1 {
-        font-size: 2.5rem;
+    .resume-container {
+        margin-top: 60px;
+        padding: 1rem;
     }
 
-    .contact-intro p {
-        font-size: 1.2rem;
+    header h1 {
+        font-size: 2rem;
     }
 
-    .contact-details {
-        text-align: center;
+    section h2 {
+        font-size: 1.5rem;
     }
 
-    .social-links {
-        justify-content: center;
+    ul {
+        padding-left: 15px;
+    }
+
+    button {
+        padding: 0.6rem 1rem;
     }
 }
 
@@ -318,11 +314,19 @@ body {
         font-size: 0.9rem;
     }
 
-    .contact-intro h1 {
-        font-size: 2rem;
+    header h1 {
+        font-size: 1.5rem;
     }
 
-    .contact-intro p {
-        font-size: 1rem;
+    header p {
+        font-size: 0.9rem;
+    }
+
+    section h2 {
+        font-size: 1.2rem;
+    }
+
+    button {
+        padding: 0.5rem 0.8rem;
     }
 }

@@ -20,7 +20,7 @@ body {
     z-index: -1;
 }
 
-/* Navigation (Consistent with index.html and about.html) */
+/* Navigation */
 .navbar {
     position: fixed;
     top: 0;
@@ -38,6 +38,54 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     color: #00ddeb;
+    white-space: nowrap;
+}
+
+/* Hamburger Menu Styles */
+.nav-toggle {
+    display: none; /* Hidden checkbox for toggling */
+}
+
+.nav-toggle-label {
+    display: none; /* Hidden by default, shown on mobile */
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+}
+
+.nav-toggle-label span {
+    background: #00ddeb;
+    display: block;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle-label span:nth-child(1) {
+    top: 0;
+}
+
+.nav-toggle-label span:nth-child(2) {
+    top: 8px;
+}
+
+.nav-toggle-label span:nth-child(3) {
+    top: 16px;
+}
+
+/* When checkbox is checked, transform hamburger into an "X" */
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
 }
 
 .nav-links {
@@ -55,6 +103,7 @@ body {
     font-weight: 400;
     transition: color 0.3s ease;
     position: relative;
+    font-size: 1rem;
 }
 
 .nav-links a:hover,
@@ -211,16 +260,45 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
-        padding: 1rem;
+        padding: 0.5rem 1rem;
+        align-items: center;
     }
 
+    .logo {
+        font-size: 1.2rem;
+    }
+
+    /* Show Hamburger Menu */
+    .nav-toggle-label {
+        display: block;
+    }
+
+    /* Hide Nav Links by Default on Mobile */
     .nav-links {
-        margin-top: 1rem;
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        padding: 1rem 0;
+    }
+
+    /* Show Nav Links When Checkbox is Checked */
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
     }
 
     .nav-links li {
-        margin: 0 1rem;
+        margin: 0.5rem 0;
+        text-align: center;
+    }
+
+    .nav-links a {
+        font-size: 1rem;
+        display: block;
+        padding: 0.5rem 0;
     }
 
     .experience-intro h1 {
@@ -233,5 +311,24 @@ body {
 
     .experience-grid {
         grid-template-columns: 1fr;
+    }
+}
+
+/* Very Small Devices (Portrait Phones < 320px) */
+@media (max-width: 320px) {
+    .logo {
+        font-size: 1rem;
+    }
+
+    .nav-links a {
+        font-size: 0.9rem;
+    }
+
+    .experience-intro h1 {
+        font-size: 2rem;
+    }
+
+    .experience-intro p {
+        font-size: 1rem;
     }
 }
