@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 2rem;
+    padding: 1rem 1rem; /* Reduced padding for mobile */
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -38,15 +38,17 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     color: #00ddeb;
+    white-space: nowrap; /* Prevent logo text from wrapping */
 }
 
 .nav-links {
     list-style: none;
     display: flex;
+    white-space: nowrap; /* Prevent links from wrapping */
 }
 
 .nav-links li {
-    margin-left: 1.5rem; /* Reduced margin for mobile */
+    margin-left: 1.5rem;
 }
 
 .nav-links a {
@@ -55,7 +57,7 @@ body {
     font-weight: 400;
     transition: color 0.3s ease;
     position: relative;
-    font-size: 1rem; /* Base font size */
+    font-size: 1rem;
 }
 
 .nav-links a:hover,
@@ -174,19 +176,33 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        padding: 0.5rem 1rem;
+        padding: 0.5rem 0.5rem;
+        align-items: center;
+        flex-wrap: nowrap; /* Prevent wrapping of navbar contents */
     }
 
     .logo {
-        font-size: 1.2rem;
+        font-size: 1rem;
+        margin-right: 0.5rem; /* Add small spacing between logo and nav-links */
+    }
+
+    .nav-links {
+        overflow-x: auto; /* Enable horizontal scrolling */
+        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+        scrollbar-width: none; /* Hide scrollbar for Firefox */
+        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+    }
+
+    .nav-links::-webkit-scrollbar {
+        display: none; /* Hide scrollbar for Chrome/Safari */
     }
 
     .nav-links li {
-        margin-left: 1rem;
+        margin-left: 0.8rem; /* Reduced margin to fit more links */
     }
 
     .nav-links a {
-        font-size: 0.9rem;
+        font-size: 0.85rem; /* Smaller font size for mobile */
     }
 
     .hero-content {
@@ -218,26 +234,16 @@ body {
 
 /* Very Small Devices (Portrait Phones < 320px) */
 @media (max-width: 320px) {
-    .navbar {
-        flex-direction: column;
-        padding: 0.5rem;
-    }
-
     .logo {
-        font-size: 1rem;
-    }
-
-    .nav-links {
-        flex-direction: column;
-        align-items: center;
+        font-size: 0.9rem;
     }
 
     .nav-links li {
-        margin: 0.3rem 0;
+        margin-left: 0.5rem;
     }
 
     .nav-links a {
-        font-size: 0.85rem;
+        font-size: 0.8rem;
     }
 
     .hero {
