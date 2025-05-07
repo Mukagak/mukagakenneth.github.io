@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem; /* Reduced padding for mobile */
+    padding: 1rem 1rem;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -38,13 +38,14 @@ body {
     font-size: 1.5rem;
     font-weight: 600;
     color: #00ddeb;
-    white-space: nowrap; /* Prevent logo text from wrapping */
+    white-space: nowrap;
 }
 
 .nav-links {
     list-style: none;
     display: flex;
-    white-space: nowrap; /* Prevent links from wrapping */
+    white-space: nowrap;
+    position: relative; /* Required for positioning pseudo-elements */
 }
 
 .nav-links li {
@@ -178,31 +179,53 @@ body {
     .navbar {
         padding: 0.5rem 0.5rem;
         align-items: center;
-        flex-wrap: nowrap; /* Prevent wrapping of navbar contents */
+        flex-wrap: nowrap;
     }
 
     .logo {
         font-size: 1rem;
-        margin-right: 0.5rem; /* Add small spacing between logo and nav-links */
+        margin-right: 0.5rem;
     }
 
     .nav-links {
-        overflow-x: auto; /* Enable horizontal scrolling */
-        -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
-        scrollbar-width: none; /* Hide scrollbar for Firefox */
-        -ms-overflow-style: none; /* Hide scrollbar for IE/Edge */
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: none;
+        -ms-overflow-style: none;
     }
 
     .nav-links::-webkit-scrollbar {
-        display: none; /* Hide scrollbar for Chrome/Safari */
+        display: none;
+    }
+
+    /* Scroll Indicator */
+    .nav-links::before,
+    .nav-links::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        height: 100%;
+        width: 15px; /* Width of the fade effect */
+        z-index: 1; /* Ensure it’s above the links */
+        pointer-events: none; /* Allow clicking through the gradient */
+    }
+
+    .nav-links::before {
+        left: 0;
+        background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+    }
+
+    .nav-links::after {
+        right: 0;
+        background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
     }
 
     .nav-links li {
-        margin-left: 0.8rem; /* Reduced margin to fit more links */
+        margin-left: 0.8rem;
     }
 
     .nav-links a {
-        font-size: 0.85rem; /* Smaller font size for mobile */
+        font-size: 0.85rem;
     }
 
     .hero-content {
