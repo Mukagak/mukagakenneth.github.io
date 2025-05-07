@@ -46,7 +46,7 @@ body {
 }
 
 .nav-links li {
-    margin-left: 2rem;
+    margin-left: 1.5rem; /* Reduced margin for mobile */
 }
 
 .nav-links a {
@@ -55,6 +55,7 @@ body {
     font-weight: 400;
     transition: color 0.3s ease;
     position: relative;
+    font-size: 1rem; /* Base font size */
 }
 
 .nav-links a:hover,
@@ -173,7 +174,6 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        flex-direction: column;
         padding: 0.5rem 1rem;
     }
 
@@ -181,14 +181,8 @@ body {
         font-size: 1.2rem;
     }
 
-    .nav-links {
-        margin-top: 0.5rem;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
     .nav-links li {
-        margin: 0.5rem;
+        margin-left: 1rem;
     }
 
     .nav-links a {
@@ -222,9 +216,10 @@ body {
     }
 }
 
-/* Extra Small Devices (Portrait Phones) */
-@media (max-width: 480px) {
+/* Very Small Devices (Portrait Phones < 320px) */
+@media (max-width: 320px) {
     .navbar {
+        flex-direction: column;
         padding: 0.5rem;
     }
 
@@ -249,10 +244,6 @@ body {
         padding: 0 0.5rem;
     }
 
-    .hero-content {
-        padding: 0;
-    }
-
     .profile-pic {
         width: 100px;
         height: 100px;
@@ -264,14 +255,14 @@ body {
 
     .hero p {
         font-size: 0.9rem;
-        white-space: normal; /* Allow wrapping for typing text */
-        max-width: 90%; /* Prevent overflow */
+        white-space: normal;
+        max-width: 90%;
         margin: 0 auto 1rem;
     }
 
     .typing {
         white-space: normal;
-        animation: none; /* Disable typing animation on small screens to prevent overflow */
+        animation: none;
         border-right: none;
     }
 
