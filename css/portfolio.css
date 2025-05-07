@@ -28,7 +28,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1rem;
+    padding: 1rem 2rem;
     background: rgba(0, 0, 0, 0.8);
     backdrop-filter: blur(10px);
     z-index: 1000;
@@ -41,11 +41,56 @@ body {
     white-space: nowrap;
 }
 
+/* Hamburger Menu Styles */
+.nav-toggle {
+    display: none; /* Hidden checkbox for toggling */
+}
+
+.nav-toggle-label {
+    display: none; /* Hidden by default, shown on mobile */
+    cursor: pointer;
+    width: 30px;
+    height: 20px;
+    position: relative;
+}
+
+.nav-toggle-label span {
+    background: #00ddeb;
+    display: block;
+    height: 3px;
+    width: 100%;
+    position: absolute;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.nav-toggle-label span:nth-child(1) {
+    top: 0;
+}
+
+.nav-toggle-label span:nth-child(2) {
+    top: 8px;
+}
+
+.nav-toggle-label span:nth-child(3) {
+    top: 16px;
+}
+
+/* When checkbox is checked, transform hamburger into an "X" */
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(2) {
+    opacity: 0;
+}
+
+.nav-toggle:checked ~ .nav-toggle-label span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+}
+
 .nav-links {
     list-style: none;
     display: flex;
-    white-space: nowrap;
-    position: relative; /* Required for positioning pseudo-elements */
 }
 
 .nav-links li {
@@ -177,55 +222,45 @@ body {
 /* Responsive Design */
 @media (max-width: 768px) {
     .navbar {
-        padding: 0.5rem 0.5rem;
+        padding: 0.5rem 1rem;
         align-items: center;
-        flex-wrap: nowrap;
     }
 
     .logo {
-        font-size: 1rem;
-        margin-right: 0.5rem;
+        font-size: 1.2rem;
     }
 
+    /* Show Hamburger Menu */
+    .nav-toggle-label {
+        display: block;
+    }
+
+    /* Hide Nav Links by Default on Mobile */
     .nav-links {
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch;
-        scrollbar-width: none;
-        -ms-overflow-style: none;
-    }
-
-    .nav-links::-webkit-scrollbar {
         display: none;
-    }
-
-    /* Scroll Indicator */
-    .nav-links::before,
-    .nav-links::after {
-        content: '';
         position: absolute;
-        top: 0;
-        height: 100%;
-        width: 15px; /* Width of the fade effect */
-        z-index: 1; /* Ensure it’s above the links */
-        pointer-events: none; /* Allow clicking through the gradient */
-    }
-
-    .nav-links::before {
+        top: 100%; /* Position below navbar */
         left: 0;
-        background: linear-gradient(to right, rgba(0, 0, 0, 0.8), transparent);
+        width: 100%;
+        background: rgba(0, 0, 0, 0.9);
+        flex-direction: column;
+        padding: 1rem 0;
     }
 
-    .nav-links::after {
-        right: 0;
-        background: linear-gradient(to left, rgba(0, 0, 0, 0.8), transparent);
+    /* Show Nav Links When Checkbox is Checked */
+    .nav-toggle:checked ~ .nav-links {
+        display: flex;
     }
 
     .nav-links li {
-        margin-left: 0.8rem;
+        margin: 0.5rem 0;
+        text-align: center;
     }
 
     .nav-links a {
-        font-size: 0.85rem;
+        font-size: 1rem;
+        display: block;
+        padding: 0.5rem 0;
     }
 
     .hero-content {
@@ -258,15 +293,11 @@ body {
 /* Very Small Devices (Portrait Phones < 320px) */
 @media (max-width: 320px) {
     .logo {
-        font-size: 0.9rem;
-    }
-
-    .nav-links li {
-        margin-left: 0.5rem;
+        font-size: 1rem;
     }
 
     .nav-links a {
-        font-size: 0.8rem;
+        font-size: 0.9rem;
     }
 
     .hero {
